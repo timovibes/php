@@ -26,10 +26,7 @@ class PostController extends Controller
             'body' => 'required',
         ]);
 
-        // Temporary: we have no login yet, so attach the post to user 1
-        $validated['user_id'] = 1;
-
-        Post::create($validated);
+        $request->user()->posts()->create($validated);
 
         return redirect('/posts');
     }
