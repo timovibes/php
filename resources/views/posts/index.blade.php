@@ -15,4 +15,6 @@
     @empty
         <p>No posts yet. <a href="/posts/create">Write the first one.</a></p>
     @endforelse
+
+    {{ $posts->links('pagination::default') }}
 @endsection
