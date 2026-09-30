@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('user')->latest()->get();
+        $posts = Post::with('user')->latest()->paginate(10);
 
         return view('posts.index', compact('posts'));
     }
@@ -33,6 +33,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $post->load('user');
+
         return view('posts.show', compact('post'));
     }
 
